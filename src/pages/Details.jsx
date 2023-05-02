@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { apiKey } from "../mock/constants";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PlayIcon from "../assets/play.svg";
 
 const Details = () => {
   const [detailsData, setDetailsData] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
   const fetchData = () => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US&append_to_response=videos`
@@ -15,9 +16,12 @@ const Details = () => {
       .then((data) => setDetailsData(data));
   };
 
+  const goToTrailers = () => navigate(`/trailers/${detailsData.id}`);
+
   useEffect(() => {
     fetchData();
   }, []);
+
   console.log(detailsData);
   if (detailsData)
     return (
@@ -27,7 +31,7 @@ const Details = () => {
             className="backDrop-img"
             src={`https://image.tmdb.org/t/p/original/${detailsData.backdrop_path}`}
           />
-          <div className="play">
+          <div className="play" onClick={goToTrailers}>
             <img className="imgIcon-big" src={PlayIcon} />
           </div>
         </div>
@@ -39,9 +43,9 @@ const Details = () => {
             />
           </div>
           <div className="detail-card-info">
-            <div className="btn-watch">
+            <div className="btn-watch" onClick={goToTrailers}>
               <img className="play--watch" src={PlayIcon} />
-              <p>Watch now</p>
+              <p>Watch trailers</p>
             </div>
             <h3 className="detail-title">{detailsData.original_title}</h3>
             <p>{detailsData.overview}</p>
