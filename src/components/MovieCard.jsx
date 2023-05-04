@@ -10,6 +10,7 @@ export default function MovieCard({ title, imgUrl, rating, id }) {
   const navigate = useNavigate();
   
   return (
+    
     <div className="card" onClick={() => navigate(`/details/${id}`)}>
       <div className="img-container">
         <img className="image" src={`https://image.tmdb.org/t/p/w500${imgUrl}`} />

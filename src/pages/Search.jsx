@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // import React from 'react'
 
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { apiKey } from "../mock/constants";
 
 import SmallMovieCard from "../components/SmallMovieCard";
 import { useEffect, useState } from "react";
+import NavBar from "../components/NavBar";
 
 const Search = () => {
   const { name } = useParams();
+  const {pathname} = useLocation();
   const [searchedData, setSearchedData] = useState([]);
 
   const fetchData = () => {
@@ -21,24 +23,27 @@ const Search = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [pathname]);
 
   return (
-    <div className="collection-main">
-      <h1 className="collection-name">Search results for {`"${name}"`}</h1>
-      <div className="sm-cards-collections">
-        {searchedData.map((data) => (
-          <SmallMovieCard
-            key={data.id}
-            title={data.original_title}
-            imgUrl={data.poster_path}
-            rating={data.vote_average}
-            id={data.id}
-            date={data.release_date}
-          />
-        ))}
+    <>
+      <NavBar />
+      <div className="collection-main">
+        <h1 className="collection-name">Search results for {`"${name}"`}</h1>
+        <div className="sm-cards-collections">
+          {searchedData.map((data) => (
+            <SmallMovieCard
+              key={data.id}
+              title={data.original_title}
+              imgUrl={data.poster_path}
+              rating={data.vote_average}
+              id={data.id}
+              date={data.release_date}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

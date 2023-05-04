@@ -24,7 +24,7 @@ const NavBar = () => {
   return (
     <div className="nav">
       <div className="main-nav">
-        <img src={Logo} className="logo" />
+        <img onClick={() => navigate('/')} src={Logo} className="logo" />
         <div className="nav-links">
           {genres.map((item) => (
             <p key={item.id} className="link" onClick={() => navigate(`/genre/${item.name.toLocaleLowerCase()}/${item.id}`)}>{item.name}</p>
