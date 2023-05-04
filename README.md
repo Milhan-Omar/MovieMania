@@ -10,8 +10,8 @@ The following features are implemented in the MovieMania project:
 
 ## Technologies
 The following technologies are used in the MovieMania project:
-* **Frontend:** ReactJS, HTML, CSS, VITE
-* **APIs:** The Movie Database (TMDb) API, YOUTUBE-API
+* **Frontend:** ReactJS, HTML, CSS, Vite.
+* **APIs:** The Movie Database (TMDb) API, Youtube-API.
 
 ## :floppy_disk: Installation Guide
 1. Clone the repo `git@github.com:Milhan-Omar/MovieMania.git`
@@ -25,6 +25,3 @@ The following contributors have worked on the MovieMania project:
 * [Ruperth](https://github.com/ruperthnyagesoa)
 * [Abdirashid](https://github.com/Rashidcodes0)
 * [Ringa](https://github.com/ringa-nyamvula)
-
-## License
-This project is licensed under the MIT License. Please see the `LICENSE` file for more details.
