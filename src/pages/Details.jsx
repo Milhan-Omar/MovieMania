@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { apiKey } from "../mock/constants";
 
@@ -21,6 +22,11 @@ const Details = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+  }, [])
+  
 
   console.log(detailsData);
   if (detailsData)
